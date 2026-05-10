@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PC Builds | TechPROMO</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+a {
+    color: black;
+}
+
+/* Header */
+header {
+  background: #000000;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Section title */
+h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+/* Card */
+.product {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Image */
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Content */
+.content {
+  padding: 15px;
+}
+
+.category {
+  font-size: 12px;
+  color: #888;
+}
+
+.product h3 {
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 14px;
+  color: #555;
+}
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #000000;
+  color: white;
+}
+</style>
+
+<nav>
+    <a href="home.html">Home</a>
+</nav>
+
+</head>
+<body>
+
+<header>
+  <h1>TechPROMO | Builds</h1>
+  <p>Professional & Gaming PC Builds</p>
+</header>
+
+<h2>PC Builds</h2>
+
+<section class="products">
+
+  <!-- Work PC -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7" alt="Office PC">
+    <div class="content">
+      <div class="category">Office Desktop</div>
+      <h3>Office Basic Build</h3>
+      <p>Intel i5, 8GB RAM, 256GB SSD. Perfect for office work, browsing, and documents.</p>
+      <span class="price">$500</span>
+    </div>
+  </div>
+
+  <!-- Developer PC -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68" alt="Developer PC">
+    <div class="content">
+      <div class="category">Developer</div>
+      <h3>Developer Pro Build</h3>
+      <p>Intel i7, 16GB RAM, 512GB SSD. Smooth performance for coding and multitasking.</p>
+      <span class="price">$900</span>
+    </div>
+  </div>
+
+  <!-- Design Workstation -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3" alt="Design PC">
+    <div class="content">
+      <div class="category">Design Workstation</div>
+      <h3>Creative Studio PC</h3>
+      <p>Ryzen 9, 32GB RAM, 1TB SSD. Ideal for video editing, 3D, and design work.</p>
+      <span class="price">$1500</span>
+    </div>
+  </div>
+
+  <!-- Gaming PC -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" alt="Gaming PC">
+    <div class="content">
+      <div class="category">Gaming</div>
+      <h3>Gaming Starter Build</h3>
+      <p>Ryzen 5, 16GB RAM, GTX 1660. Great for esports and mid-level gaming.</p>
+      <span class="price">$800</span>
+    </div>
+  </div>
+
+  <!-- High-End Gaming -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704" alt="High End Gaming PC">
+    <div class="content">
+      <div class="category">Gaming</div>
+      <h3>Ultra Gaming Rig</h3>
+      <p>Ryzen 7, 32GB RAM, RTX 4080. High FPS gaming and streaming powerhouse.</p>
+      <span class="price">$2200</span>
+    </div>
+  </div>
+
+  <!-- Compact PC -->
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f" alt="Mini PC">
+    <div class="content">
+      <div class="category">Compact</div>
+      <h3>Mini Office PC</h3>
+      <p>Small form factor, Intel i3, 8GB RAM. Space-saving and efficient.</p>
+      <span class="price">$400</span>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 TechPROMO | Builds</p>
+</footer>
+
+<style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: black;
+  transition: 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+body.dark header,
+body.dark nav,
+body.dark section,
+body.dark div {
+  background: #1e1e1e !important;
+  color: white !important;
+}
+
+.dark-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #1f2d3d;
+  color: white;
+  z-index: 9999;
+}
+</style>
+</body>
+</html>

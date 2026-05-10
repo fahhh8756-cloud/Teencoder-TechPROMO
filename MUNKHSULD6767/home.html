@@ -1,0 +1,766 @@
+<!DOCTYPE html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+<html>
+    <title>TechPROMO</title>
+        <!-- CSS -->
+<link rel="stylesheet" href="style.css">
+<!-- ===== HEADER ===== -->
+<header>
+    <nav class="navbar section-content">
+        
+        <!-- Logo -->
+        <div class="nav-logo">
+            <a href="#" class="logo-text">💻 TechPROMO</a>
+        </div>
+
+        <!-- Navigation -->
+        <ul class="nav-menu">
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="index.html" class="nav-link">Laptops</a></li>
+            <li><a href="media.html" class="nav-link">Desktops</a></li>
+            <li><a href="build.html" class="nav-link">Accessories</a></li>
+            <li><a href="intro.html" class="nav-link">Contact</a></li>
+            <li><a href="god.html" class="nav-link">Backpack</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<main>
+    <section class="hero section-content">
+
+        <!-- Text -->
+        <div class="hero-text">
+            <h1>Power Your World with the Latest Tech</h1>
+            <p>
+                Shop high-performance laptops, desktops, and accessories 
+                at unbeatable prices. Upgrade your setup today.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#" class="btn primary-btn">Shop Now</a>
+                <a href="#" class="btn secondary-btn">View Deals</a>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="hero-image">
+            <img src="images/computer.png" alt="Modern computer setup">
+        </div>
+
+    </section>
+</main>
+<main>
+
+```
+<!-- ===== HERO SECTION ===== -->
+<section class="hero section-content">
+    <div class="hero-text">
+        <h1>Next-Gen Computers for Work & Play</h1>
+        <p>
+            Explore powerful laptops, custom desktops, and top-tier accessories 
+            built for performance, gaming, and productivity.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#" class="btn primary-btn">Shop Now</a>
+            <a href="#" class="btn secondary-btn">Browse Deals</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="images/hero-pc.png" alt="Gaming PC setup">
+    </div>
+</section>
+
+<!-- ===== FEATURES / BENEFITS ===== -->
+<section class="features section-content">
+    <div class="feature">
+        <h3>⚡ High Performance</h3>
+        <p>Latest CPUs & GPUs for smooth multitasking and gaming.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🛠 Custom Builds</h3>
+        <p>Create your dream PC with our custom configuration options.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🚚 Fast Delivery</h3>
+        <p>Quick and reliable shipping right to your doorstep.</p>
+    </div>
+</section>
+
+<!-- ===== PRODUCT SECTION ===== -->
+<section class="products section-content">
+    <h2 class="section-title">Featured Products</h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fef8f0;
+      color: #2c1e16;
+    }
+
+    h1, h2, h3, .logo-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    :root {
+      --cafe-cream: #fff6ed;
+      --cafe-accent: #c87a3a;
+      --cafe-dark: #2c1e16;
+      --shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+
+    .cafe-header {
+      background: rgba(255, 246, 237, 0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #f3e1cf;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #c87a3a;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: #8b694e;
+    }
+
+    .cart-preview-btn {
+      background: #2c1e16;
+      border: none;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .cart-preview-btn:hover {
+      background: #c87a3a;
+      transform: scale(0.97);
+    }
+    .item-count-badge {
+      background: #d9a13b;
+      border-radius: 40px;
+      padding: 2px 10px;
+    }
+
+    .mode-bar {
+      max-width: 1400px;
+      margin: 1rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .order-mode {
+      background: white;
+      border-radius: 60px;
+      display: flex;
+      gap: 6px;
+      padding: 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .mode-option {
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .mode-option.active {
+      background: #c87a3a;
+      color: white;
+    }
+
+    .category-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin: 2rem 2rem 1rem;
+    }
+    .cat-btn {
+      background: #fff1e6;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #4f3727;
+    }
+    .cat-btn.active {
+      background: #c87a3a;
+      color: white;
+    }
+    .cat-btn i {
+      margin-right: 6px;
+    }
+
+    .menu-grid {
+      max-width: 1400px;
+      margin: 1rem auto 3rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      border: 1px solid #f7e8dc;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 35px rgba(0,0,0,0.1);
+    }
+    .card-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+    }
+    .cat-tag {
+      background: rgba(44,30,22,0.75);
+      backdrop-filter: blur(4px);
+      padding: 4px 12px;
+      border-radius: 40px;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .card-info {
+      padding: 1.2rem;
+    }
+    .card-info h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .desc {
+      font-size: 0.8rem;
+      color: #876b53;
+      margin: 8px 0;
+      line-height: 1.4;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .price {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #c87a3a;
+    }
+    .add-btn {
+      background: #2c1e16;
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .add-btn:hover {
+      background: #c87a3a;
+    }
+
+    /* slide cart */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-overlay.open {
+      visibility: visible;
+      opacity: 1;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 500px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .cart-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-bottom: 2px solid #f3e1cf;
+    }
+    .cart-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    .cart-item {
+      background: #fef7f0;
+      border-radius: 20px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qty-btn {
+      background: #e7d9cf;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .discount-section {
+      padding: 1rem;
+      border-top: 1px solid #f3e1cf;
+      border-bottom: 1px solid #f3e1cf;
+      background: #fffaf5;
+    }
+    .discount-input-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .discount-input-group input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 40px;
+      border: 1px solid #f0dfcf;
+      outline: none;
+    }
+    .apply-discount {
+      background: #2c1e16;
+      color: white;
+      border: none;
+      padding: 0 18px;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+    .discount-feedback {
+      font-size: 0.7rem;
+      margin-top: 6px;
+      color: #c87a3a;
+    }
+    .cart-footer {
+      padding: 1rem;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .checkout-btn {
+      background: #c87a3a;
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 60px;
+      color: white;
+      font-weight: 800;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    .pickup-message {
+      text-align: center;
+      font-size: 0.7rem;
+      margin-top: 10px;
+      color: #8b694e;
+    }
+    .empty-cart {
+      text-align: center;
+      padding: 2rem;
+      color: #b4896b;
+    }
+    @media (max-width: 700px) {
+      .menu-grid { padding: 0 1rem; gap: 1rem; }
+    }
+
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: black;
+  transition: 0.3s ease;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+/* Make common sections adapt */
+body.dark header,
+body.dark nav,
+body.dark section,
+body.dark div {
+  background: #1e1e1e !important;
+  color: white !important;
+}
+
+/* Button */
+.dark-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #1f2d3d;
+  color: white;
+  z-index: 9999;
+}
+  </style>
+  <nav>
+    <a href="products.html">Products</a>
+  </nav>
+</head>
+<body>
+
+            <img src="img/SIGMA LAPTOP.jpeg" alt="Laptop">
+            <h3>Gaming Laptop</h3>
+            <p class="price"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SportX Store</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: black;
+}
+
+/* SEARCH BAR */
+header input {
+  width: 300px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 14px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* PRODUCTS */
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.product {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 12px;
+  width: 240px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  color: #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgb(0, 0, 0);
+  color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+</html>1500</p>
+            <button class="btn primary-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="img/sleek-desktop-computer-icon-on-a-transparent-background-png.png.webp" alt="Desktop PC">
+            <h3>Desktop PC</h3>
+            <p class="price">$1250</p>
+            <button class="btn primary-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="img/mechanical-rgb-keyboard-with-illuminated-keys-perfect-for-gaming-and-professional-use-features-customizable-lighting-and-durable-design-png.png" alt="Keyboard">
+            <h3>Mechanical Keyboard</h3>
+            <p class="price">$120</p>
+            <button class="btn primary-btn">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PROMO / BANNER ===== -->
+<section class="promo">
+    <div class="section-content">
+        <h2>🔥 Limited Time Offer</h2>
+        <p>Get up to 30% off selected gaming PCs and accessories.</p>
+        <a href="#" class="btn primary-btn">Shop Deals</a>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials section-content">
+    <h2 class="section-title">What Our Customers Say</h2>
+
+    <div class="testimonial">
+        <p>"Amazing quality and fast delivery. My gaming setup is perfect!"</p>
+        <h4>- Alex</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"Great prices and excellent customer support."</p>
+        <h4>- Sarah</h4>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="section-content">
+        <p>© 2026 TechPROMO. All rights reserved.</p>
+    </div>
+</footer>
+</main>
+<main>
+
+```
+<!-- ===== HERO ===== -->
+<section class="hero section-content">
+    <div class="hero-text">
+        <h1>High-Performance PCs Built for Power</h1>
+        <p>
+            Gaming, streaming, or professional work — get machines powered by 
+            the latest CPUs and GPUs.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#" class="btn primary-btn">Build Your PC</a>
+            <a href="#" class="btn secondary-btn">View Gaming PCs</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+    </div>
+</section>
+
+<!-- ===== PC BUILDS ===== -->
+<section class="products section-content">
+    <h2 class="section-title">Popular PC Builds</h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="img/png-clipart-intel-core-i7-gaming-computer-desktop-computers-desktop-pc-electronics-computer-thumbnail.png" alt="Gaming PC">
+            <h3>Starter Gaming PC</h3>
+            <p>Ryzen 5 • GTX 1660 • 16GB RAM</p>
+            <p class="price">$800</p>
+            <button class="btn primary-btn">Customize</button>
+        </div>
+
+        <div class="product-card">
+            <img src="img/professional-gaming-pc-setup-with-custom-desk-and-gear-free-png.png.webp" alt="High-end PC">
+            <h3>Pro Gamer Build</h3>
+            <p>Intel i7 • RTX 4070 • 32GB RAM</p>
+            <p class="price">$1800</p>
+            <button class="btn primary-btn">Customize</button>
+        </div>
+
+        <div class="product-card">
+            <img src="img/images.jpeg" alt="PlayStation 6">
+            <h3>PlayStation 6</h3>
+            <p>Ryzen 12 • RTX 5084 • 256GB RAM</p>
+            <p class="price">$2500</p>
+            <button class="btn primary-btn">Sold Out no longer obtainble</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== COMPONENTS ===== -->
+<section class="categories section-content">
+    <h2 class="section-title">Shop Components</h2>
+
+    <div class="category-grid">
+        <div class="category-card"><h3>CPUs</h3></div>
+        <div class="category-card"><h3>GPUs</h3></div>
+        <div class="category-card"><h3>Motherboards</h3></div>
+        <div class="category-card"><h3>RAM</h3></div>
+        <div class="category-card"><h3>Storage (SSD)</h3></div>
+        <div class="category-card"><h3>Power Supplies</h3></div>
+    </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="features section-content">
+    <h2 class="section-title">Why Choose Our PCs</h2>
+
+    <div class="feature">
+        <h3>🚀 Latest Hardware</h3>
+        <p>Powered by newest generation Intel & AMD processors.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🎮 Optimized for Gaming</h3>
+        <p>High FPS performance in modern AAA titles.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🧊 Advanced Cooling</h3>
+        <p>Air & liquid cooling systems for stable performance.</p>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE BANNER ===== -->
+<section class="promo">
+    <div class="section-content">
+        <h2>Extreme Performance Starts Here</h2>
+        <p>Upgrade to RTX series GPUs and experience next-level gaming.</p>
+        <a href="#" class="btn primary-btn">Upgrade Now</a>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials section-content">
+    <h2 class="section-title">What Gamers Say</h2>
+
+    <div class="testimonial">
+        <p>"Runs every game at ultra settings. Worth every dollar."</p>
+        <h4>- Steve</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"Super fast delivery and clean cable management!"</p>
+        <h4>- George</h4>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="section-content">
+        <p>© 2026 TechStore | Built for Performance</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
+</main>
+</html>

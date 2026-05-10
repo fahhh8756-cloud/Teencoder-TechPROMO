@@ -1,0 +1,202 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ================= GLOBAL RESET ================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+}
+
+/* ================= ROOT VARIABLES ================= */
+:root {
+    /* Colors */
+    --white-color: #fff;
+    --dark-color: #252525;
+    --primary-color: #000000;
+    --secondary-color: #646464;
+    --light-color: #faf4f5;
+    --medium-gray-color: #ccc;
+
+    /* Font sizes */
+    --font-size-s: 0.9rem;
+    --font-size-n: 1rem;
+    --font-size-m: 1.12rem;
+    --font-size-l: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 2.3rem;
+
+    /* Font weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Border radius */
+    --border-radius-s: 6px;
+    --border-radius-m: 30px;
+
+    /* Layout */
+    --site-max-width: 1300px;
+
+    /* Transitions */
+    --transition: all 0.3s ease;
+}
+
+/* ================= BASE ELEMENTS ================= */
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+/* ================= LAYOUT ================= */
+.section-content {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: var(--site-max-width);
+}
+
+/* ================= NAVBAR ================= */
+header {
+    background: var(--primary-color);
+}
+
+header .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.navbar .nav-logo .logo-text {
+    color: var(--white-color);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+.navbar .nav-menu {
+    display: flex;
+    gap: 12px;
+}
+
+.navbar .nav-menu .nav-link {
+    padding: 10px 18px;
+    color: var(--white-color);
+    font-size: var(--font-size-m);
+    border-radius: var(--border-radius-m);
+    transition: var(--transition);
+}
+
+.navbar .nav-menu .nav-link:hover {
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
+
+/* Features */
+.features {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.feature {
+    flex: 1;
+}
+
+/* Products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    padding: 15px;
+    border: 1px solid var(--medium-gray-color);
+    border-radius: var(--border-radius-s);
+    text-align: center;
+}
+
+/* Promo */
+.promo {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Testimonials */
+.testimonial {
+    margin-top: 20px;
+}
+
+/* Contact Section */
+.contact {
+  background: white;
+  padding: 40px;
+}
+
+.contact h2 {
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.contact-info {
+  max-width: 300px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#contact-form button {
+  padding: 10px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#form-status {
+  margin-top: 10px;
+  color: green;
+}
+

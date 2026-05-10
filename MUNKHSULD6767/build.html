@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TechPROMO | Accessories</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+a {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+/* Header */
+header {
+  background: #000000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Section Title */
+h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+/* Card */
+.product {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.product h3 {
+  margin-top: 0;
+}
+
+.product p {
+  font-size: 14px;
+  color: #555;
+}
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.category {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #000000;
+  color: white;
+}
+</style>
+
+<nav>
+    <a href="home.html">Home</a>
+</nav>
+
+</head>
+<body>
+
+<header>
+  <h1>TechPROMO | Accessories</h1>
+  <p>Professional Accessories for Productivity</p>
+</header>
+
+<h2>Accessories</h2>
+
+<section class="products">
+
+  <!-- Keyboard -->
+  <div class="product">
+    <div class="category">Keyboard</div>
+    <h3>Ergonomic Office Keyboard</h3>
+    <p>Comfortable full-size keyboard with wrist support, silent keys, and USB connection. Ideal for long office hours.</p>
+    <span class="price">$45</span>
+  </div>
+
+  <!-- Mouse -->
+  <div class="product">
+    <div class="category">Mouse</div>
+    <h3>Wireless Precision Mouse</h3>
+    <p>High-accuracy sensor, ergonomic design, and long battery life. Perfect for productivity and multitasking.</p>
+    <span class="price">$30</span>
+  </div>
+
+  <!-- Monitor -->
+  <div class="product">
+    <div class="category">Monitor</div>
+    <h3>24" Full HD Monitor</h3>
+    <p>Clear display with low blue light mode. Great for office work, coding, and document editing.</p>
+    <span class="price">$180</span>
+  </div>
+
+  <!-- Docking Station -->
+  <div class="product">
+    <div class="category">Docking Station</div>
+    <h3>USB-C Docking Hub</h3>
+    <p>Expand your laptop with HDMI, USB, Ethernet, and charging support in one compact device.</p>
+    <span class="price">$75</span>
+  </div>
+
+  <!-- Headphones -->
+  <div class="product">
+    <div class="category">Audio</div>
+    <h3>Noise-Cancelling Headset</h3>
+    <p>Clear microphone and noise reduction for meetings and remote work.</p>
+    <span class="price">$60</span>
+  </div>
+
+  <!-- Webcam -->
+  <div class="product">
+    <div class="category">Camera</div>
+    <h3>HD Webcam 1080p</h3>
+    <p>Sharp video quality with built-in microphone. Ideal for online meetings and conferencing.</p>
+    <span class="price">$50</span>
+  </div>
+
+  <!-- External SSD -->
+  <div class="product">
+    <div class="category">Storage</div>
+    <h3>Portable SSD 1TB</h3>
+    <p>Fast data transfer speeds and compact design. Reliable storage for professionals.</p>
+    <span class="price">$120</span>
+  </div>
+
+  <!-- Laptop Stand -->
+  <div class="product">
+    <div class="category">Workspace</div>
+    <h3>Adjustable Laptop Stand</h3>
+    <p>Improves posture and airflow. Durable aluminum design for daily use.</p>
+    <span class="price">$35</span>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 TechPROMO | Accessories</p>
+</footer>
+
+<style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: black;
+  transition: 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+body.dark header,
+body.dark nav,
+body.dark section,
+body.dark div {
+  background: #1e1e1e !important;
+  color: white !important;
+}
+
+.dark-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #1f2d3d;
+  color: white;
+  z-index: 9999;
+}
+</style>
+</body>
+</html>
