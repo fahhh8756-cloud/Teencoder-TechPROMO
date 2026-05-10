@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nike shoes</title>
+
+<style>
+:root {
+    --bg: #ffffff;
+    --text: #111;
+    --card: white;
+    --nav: black;
+    --nav-text: white;
+}
+
+.dark {
+    --bg: #121212;
+    --text: #f5f5f5;
+    --card: #1e1e1e;
+    --nav: #000;
+    --nav-text: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* NAV */
+nav {
+    background: var(--nav);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav a {
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn {
+    color: var(--nav-text);
+    background: transparent;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+nav a:hover,
+.nav-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* GRID */
+.image-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.image-box {
+    background: var(--card);
+    padding: 10px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.image-box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* BUTTON */
+button {
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Nike Shoes Store</h1>
+</header> 
+<nav>
+<div class="nav-left">
+    <img src="">
+    <a href="Backpack.html">Return Backpack 🎒</a>
+</div>
+
+<nav>
+<div class="nav-left">
+    <img src="">
+    <a href="sport.html">View sport Backpack 🏀</a>
+</div>
+</nav>
+
+<div class="nav-right">
+    <button class="nav-btn" onclick="toggleDark()">🌙 Dark Mode</button>
+    <span style="color:white;">Items: <span id="cartCount">0</span></span>
+</div>
+</nav>
+
+<h2>Products</h2>
+
+<div class="image-row">
+
+<div class="image-box">
+    <img src="img/dinner.jpeg">
+<p>Nike Elite</p>
+<p>₮8990</p>
+<button onclick="addToCart('Nike Elite', 80)">сагс нд оруулах</button>
+</div>
+<div class="image-box">
+<img src="img/pop.jpeg">
+<p>Nike Elite 2</p>
+<p>₮7900</p>
+<button onclick="addToCart('Nike Elite 2', 85)">сагс нд оруулах</button>
+</div>
+
+<div class="image-box">
+<img src="img/no.jpeg">
+<p>Nike Varsity</p>
+<p>₮8600</p>
+<button onclick="addToCart('Nike Varsity', 70)">сагс нд оруулах</button>
+</div>
+
+<div class="image-box">
+<img src="img/cry.jpeg">
+<p>Nike Varsity 2</p>
+<p>₮9000</p>
+<button onclick="addToCart('Nike Varsity 2', 75)">сагс нд оруулах</button>
+</div>
+
+<div class="image-box">
+<img src="img/jack.jpeg">
+<p>Nike Elemental </p>
+<p>₮8800</p>
+<button onclick="addToCart('Nike Elemental Backpack', 65)">сагс нд оруулах</button>
+</div>
+
+<div class="image-box">
+<img src="img/nah.jpeg">
+<p>Nike shoes 3</p>
+<p>₮10000</p>
+<button onclick="addToCart('Nike Backpack 3', 60)">сагс нд оруулах</button>
+</div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCart() {
+    document.getElementById("cartCount").innerText = cart.length;
+}
+updateCart();
+
+/* UPDATED CART FUNCTION */
+function addToCart(name, price) {
+    cart.push({ name: name, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+}
+
+/* DARK MODE */
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

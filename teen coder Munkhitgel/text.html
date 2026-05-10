@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #1e1e2f;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #00ffcc;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 8px;
+            justify-content: center;
+            margin: 30px auto;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background: #2a2a3d;
+            font-size: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        .cell:hover {
+            background: #3a3a55;
+        }
+        .cell.x { color: #ff4d4d; }
+        .cell.o { color: #4d9fff; }
+        .status {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background: #00ffcc;
+            color: #1e1e2f;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #00ccaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 Tic Tac Toe</h1>
+    <div class="status" id="status">Your turn (X)</div>
+    
+    <div class="board" id="board"></div>
+    
+    <button onclick="resetGame()">New Game</button>
+
+    <script>
+        let board = Array(9).fill(null);
+        let currentPlayer = "X";
+        let gameActive = true;
+
+        const winningConditions = [
+            [0,1,2], [3,4,5], [6,7,8],
+            [0,3,6], [1,4,7], [2,5,8],
+            [0,4,8], [2,4,6]
+        ];
+
+        const boardElement = document.getElementById("board");
+        const statusElement = document.getElementById("status");
+
+        function createBoard() {
+            boardElement.innerHTML = "";
+            board.forEach((_, index) => {
+                const cell = document.createElement("div");
+                cell.classList.add("cell");
+                cell.dataset.index = index;
+                cell.addEventListener("click", handleClick);
+                boardElement.appendChild(cell);
+            });
+        }
+
+        function handleClick(e) {
+            const index = parseInt(e.target.dataset.index);
+            
+            if (board[index] || !gameActive) return;
+
+            board[index] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            e.target.classList.add(currentPlayer.toLowerCase());
+
+            if (checkWin()) {
+                statusElement.textContent = `🎉 You Win! 🎉`;
+                gameActive = false;
+                return;
+            }
+
+            if (board.every(cell => cell)) {
+                statusElement.textContent = "🤝 Draw!";
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = "O";
+            statusElement.textContent = "AI thinking...";
+            
+            setTimeout(aiMove, 400);
+        }
+
+        function aiMove() {
+            let bestScore = -Infinity;
+            let move = null;
+
+            for (let i = 0; i < 9; i++) {
+                if (!board[i]) {
+                    board[i] = "O";
+                    let score = minimax(board, 0, false);
+                    board[i] = null;
+                    if (score > bestScore) {
+                        bestScore = score;
+                        move = i;
+                    }
+                }
+            }
+
+            if (move !== null) {
+                board[move] = "O";
+                const cells = boardElement.children;
+                cells[move].textContent = "O";
+                cells[move].classList.add("o");
+
+                if (checkWin()) {
+                    statusElement.textContent = "AI Wins 😢";
+                    gameActive = false;
+                    return;
+                }
+
+                if (board.every(cell => cell)) {
+                    statusElement.textContent = "🤝 Draw!";
+                    gameActive = false;
+                    return;
+                }
+
+                currentPlayer = "X";
+                statusElement.textContent = "Your turn (X)";
+            }
+        }
+
+        function minimax(newBoard, depth, isMaximizing) {
+            if (checkWinCondition(newBoard, "O")) return 10 - depth;
+            if (checkWinCondition(newBoard, "X")) return depth - 10;
+            if (newBoard.every(cell => cell)) return 0;
+
+            if (isMaximizing) {
+                let bestScore = -Infinity;
+                for (let i = 0; i < 9; i++) {
+                    if (!newBoard[i]) {
+                        newBoard[i] = "O";
+                        let score = minimax(newBoard, depth + 1, false);
+                        newBoard[i] = null;
+                        bestScore = Math.max(score, bestScore);
+                    }
+                }
+                return bestScore;
+            } else {
+                let bestScore = Infinity;
+                for (let i = 0; i < 9; i++) {
+                    if (!newBoard[i]) {
+                        newBoard[i] = "X";
+                        let score = minimax(newBoard, depth + 1, true);
+                        newBoard[i] = null;
+                        bestScore = Math.min(score, bestScore);
+                    }
+                }
+                return bestScore;
+            }
+        }
+
+        function checkWin() {
+            return checkWinCondition(board, currentPlayer);
+        }
+
+        function checkWinCondition(currentBoard, player) {
+            return winningConditions.some(condition => {
+                return condition.every(index => currentBoard[index] === player);
+            });
+        }
+
+        function resetGame() {
+            board = Array(9).fill(null);
+            currentPlayer = "X";
+            gameActive = true;
+            statusElement.textContent = "Your turn (X)";
+            createBoard();
+        }
+
+        // Start the game
+        createBoard();
+    </script>
+</body>
+</html>

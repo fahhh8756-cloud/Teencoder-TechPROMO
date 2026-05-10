@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fixed Grenade - Big Damage</title>
+<style>
+    body { margin:0; background:#000; overflow:hidden; font-family:Consolas, monospace; }
+    canvas { display:block; margin:0 auto; }
+    #menu, #gameover {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        color: white; text-align: center; display: none;
+    }
+    button { font-size:24px; padding:15px 40px; margin:10px; background:#222; color:white; border:3px solid #0f0; cursor:pointer; }
+    button:hover { background:#0a0; }
+</style>
+</head>
+<body>
+
+<div id="menu">
+    <h1>🔫 GUN GAME</h1>
+    <button onclick="startGame(1)">1 PLAYER</button><br><br>
+    <button onclick="startGame(2)">2 PLAYERS</button>
+</div>
+
+<div id="ui" style="position:absolute;top:10px;left:10px;color:white;display:none;">
+    P1 ∞ | Grenades: <span id="g1">5</span><br>
+    <span id="p2ui">P2 ∞ | Grenades: <span id="g2">5</span></span><br>
+    Score: <span id="score">0</span>
+</div>
+
+<div id="gameover" style="display:none;">
+    <h1>GAME OVER</h1>
+    <p>Final Score: <span id="final">0</span></p>
+    <button onclick="location.reload()">Restart</button>
+</div>
+
+<canvas id="game" width="1000" height="700"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const W = canvas.width, H = canvas.height;
+
+let mode = 1, score = 0, gameOver = false, shake = 0, started = false;
+
+let p1 = { x: W*0.35, y: H/2, speed: 5.8, size: 18, angle: 0, color: "#0f0", grenades: 5, lastShot: 0 };
+let p2 = { x: W*0.65, y: H/2, speed: 5.8, size: 18, angle: 0, color: "#0ff", grenades: 5, lastShot: 0 };
+
+let bullets = [], grenades = [], enemies = [], particles = [], explosions = [];
+let keys = {}, mouse = { x: W/2, y: H/2, down: false };
+
+window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+canvas.addEventListener("mousemove", e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+});
+canvas.addEventListener("mousedown", () => mouse.down = true);
+canvas.addEventListener("mouseup", () => mouse.down = false);
+
+function startGame(m) {
+    mode = m;
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("ui").style.display = "block";
+    if (mode === 1) document.getElementById("p2ui").style.display = "none";
+    started = true;
+    loop();
+}
+
+function spawnEnemy() {
+    const side = Math.floor(Math.random()*4);
+    let x = side===0 ? Math.random()*W : side===1 ? W+40 : side===2 ? Math.random()*W : -40;
+    let y = side===0 ? -40 : side===1 ? Math.random()*H : side===2 ? H+40 : Math.random()*H;
+    
+    const hasGun = Math.random() < 0.25;
+    enemies.push({x, y, speed: hasGun?1.7:2.45, health: hasGun?70:90, size:19, hasGun, lastShot:0});
+}
+
+class Bullet { 
+    constructor(x,y,angle){ this.x=x; this.y=y; this.angle=angle; this.speed=19.5; }
+    update(){ this.x += Math.cos(this.angle)*this.speed; this.y += Math.sin(this.angle)*this.speed; }
+    draw(){ ctx.fillStyle="#ff0"; ctx.beginPath(); ctx.arc(this.x,this.y,4.5,0,Math.PI*2); ctx.fill(); }
+}
+
+class Grenade {
+    constructor(x,y,angle){ this.x=x; this.y=y; this.angle=angle; this.speed=12.5; this.life=48; }
+    update(){
+        this.x += Math.cos(this.angle)*this.speed;
+        this.y += Math.sin(this.angle)*this.speed;
+        this.speed *= 0.94;
+        this.life--;
+    }
+    draw(){
+        ctx.fillStyle = (this.life%10<5)?"#f80":"#ff0";
+        ctx.beginPath(); ctx.arc(this.x,this.y,11,0,Math.PI*2); ctx.fill();
+    }
+}
+
+function explode(x, y) {
+    shake = 25;
+    explosions.push({x, y, life: 25});
+    
+    for(let i=0; i<80; i++){
+        particles.push({x,y,
+            vx:(Math.random()-0.5)*20,
+            vy:(Math.random()-0.5)*20,
+            life:35,
+            color: Math.random()<0.6?"#ff0":"#f60"
+        });
+    }
+}
+
+function drawBackground() {
+    ctx.fillStyle = "#1e3a1e";
+    ctx.fillRect(0,0,W,H);
+}
+
+function loop() {
+    if (!started || gameOver) return;
+    drawBackground();
+
+    const sx = shake > 0 ? (Math.random()-0.5)*shake : 0;
+    const sy = shake > 0 ? (Math.random()-0.5)*shake : 0;
+    shake *= 0.78;
+
+    // Player 1
+    if (keys['w']) p1.y -= p1.speed; if (keys['s']) p1.y += p1.speed;
+    if (keys['a']) p1.x -= p1.speed; if (keys['d']) p1.x += p1.speed;
+    p1.angle = Math.atan2(mouse.y - p1.y, mouse.x - p1.x);
+
+    if (mouse.down && Date.now() - p1.lastShot > 100) {
+        bullets.push(new Bullet(p1.x + Math.cos(p1.angle)*30, p1.y + Math.sin(p1.angle)*30, p1.angle));
+        p1.lastShot = Date.now();
+    }
+    if (keys['g'] && !p1.grenadeCooldown && p1.grenades > 0) {
+        grenades.push(new Grenade(p1.x, p1.y, p1.angle));
+        p1.grenades--; p1.grenadeCooldown = Date.now();
+    }
+    if (p1.grenadeCooldown && Date.now()-p1.grenadeCooldown > 700) p1.grenadeCooldown = null;
+
+    // Player 2
+    if (mode === 2) {
+        if (keys['arrowup']) p2.y -= p2.speed; if (keys['arrowdown']) p2.y += p2.speed;
+        if (keys['arrowleft']) p2.x -= p2.speed; if (keys['arrowright']) p2.x += p2.speed;
+        if (keys['arrowup']||keys['arrowdown']||keys['arrowleft']||keys['arrowright']) {
+            p2.angle = Math.atan2(keys['arrowdown']?1:keys['arrowup']?-1:0, keys['arrowright']?1:keys['arrowleft']?-1:0);
+        }
+        if (keys[' '] && Date.now() - p2.lastShot > 100) {
+            bullets.push(new Bullet(p2.x + Math.cos(p2.angle)*30, p2.y + Math.sin(p2.angle)*30, p2.angle));
+            p2.lastShot = Date.now();
+        }
+        if (keys['shift'] && !p2.grenadeCooldown && p2.grenades > 0) {
+            grenades.push(new Grenade(p2.x, p2.y, p2.angle));
+            p2.grenades--; p2.grenadeCooldown = Date.now();
+        }
+        if (p2.grenadeCooldown && Date.now()-p2.grenadeCooldown > 700) p2.grenadeCooldown = null;
+    }
+
+    [p1,p2].forEach(p=>{ p.x=Math.max(35,Math.min(W-35,p.x)); p.y=Math.max(35,Math.min(H-35,p.y)); });
+
+    // Bullets
+    for(let i=bullets.length-1;i>=0;i--){
+        const b=bullets[i]; b.update(); b.draw();
+        if(b.x<0||b.x>W||b.y<0||b.y>H){bullets.splice(i,1);continue;}
+        for(let j=enemies.length-1;j>=0;j--){
+            if(Math.hypot(b.x-enemies[j].x, b.y-enemies[j].y) < enemies[j].size+6){
+                enemies[j].health -= 50;
+                if(enemies[j].health <= 0){ enemies.splice(j,1); score+=100; }
+                bullets.splice(i,1); break;
+            }
+        }
+    }
+
+    // Grenades - FIXED + MASSIVE DAMAGE
+    for(let i=grenades.length-1;i>=0;i--){
+        const g = grenades[i];
+        g.update(); g.draw();
+
+        if(g.life <= 0){
+            explode(g.x, g.y);
+            
+            // MASSIVE DAMAGE RADIUS
+            for(let j=enemies.length-1; j>=0; j--){
+                if(Math.hypot(enemies[j].x - g.x, enemies[j].y - g.y) < 200){  // Big hitbox
+                    enemies[j].health = 0;
+                    score += 220;
+                }
+            }
+            grenades.splice(i,1);
+        }
+    }
+
+    // Spawn Enemies
+    if(Math.random()<0.04 && enemies.length<18) spawnEnemy();
+
+    // Update Enemies
+    const now = Date.now();
+    for(let i=enemies.length-1;i>=0;i--){
+        const e = enemies[i];
+        let target = p1;
+        if(mode===2){
+            if(Math.hypot(e.x-p2.x,e.y-p2.y) < Math.hypot(e.x-p1.x,e.y-p1.y)) target = p2;
+        }
+        const dx = target.x - e.x, dy = target.y - e.y;
+        const dist = Math.hypot(dx,dy)||1;
+        e.x += (dx/dist)*e.speed;
+        e.y += (dy/dist)*e.speed;
+
+        ctx.fillStyle = e.hasGun ? "#c22" : "#a00";
+        ctx.beginPath();
+        ctx.arc(e.x+sx, e.y+sy, e.size, 0, Math.PI*2);
+        ctx.fill();
+
+        if(Math.hypot(e.x-p1.x,e.y-p1.y)<32 || (mode===2 && Math.hypot(e.x-p2.x,e.y-p2.y)<32)) gameOver=true;
+    }
+
+    // Draw Explosions + Particles
+    for(let i=explosions.length-1;i>=0;i--){
+        const ex = explosions[i];
+        ctx.globalAlpha = ex.life/25;
+        ctx.strokeStyle = "#ff0";
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.arc(ex.x, ex.y, 200 - ex.life*3, 0, Math.PI*2);
+        ctx.stroke();
+        ex.life--;
+        if(ex.life<=0) explosions.splice(i,1);
+    }
+    ctx.globalAlpha = 1;
+
+    for(let i=particles.length-1;i>=0;i--){
+        const p=particles[i];
+        p.x+=p.vx; p.y+=p.vy; p.life--; p.vx*=0.96; p.vy*=0.96;
+        if(p.life<=0){particles.splice(i,1);continue;}
+        ctx.globalAlpha = p.life/35;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x+sx-4, p.y+sy-4, 9, 9);
+    }
+    ctx.globalAlpha=1;
+
+    // Draw Players
+    [p1, ...(mode===2?[p2]:[])].forEach(p=>{
+        ctx.save();
+        ctx.translate(p.x+sx, p.y+sy);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.moveTo(26,0); ctx.lineTo(-18,17); ctx.lineTo(-13,0); ctx.lineTo(-18,-17); ctx.closePath(); ctx.fill();
+        ctx.fillStyle="#ddd"; ctx.fillRect(22,-5,26,10);
+        ctx.restore();
+    });
+
+    document.getElementById("g1").textContent = p1.grenades;
+    if(mode===2) document.getElementById("g2").textContent = p2.grenades;
+    document.getElementById("score").textContent = score;
+
+    if(gameOver){
+        document.getElementById("gameover").style.display = "block";
+        document.getElementById("final").textContent = score;
+    } else requestAnimationFrame(loop);
+}
+
+document.getElementById("menu").style.display = "block";
+</script>
+</body>
+</html>

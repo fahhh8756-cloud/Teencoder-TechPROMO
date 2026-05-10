@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phone Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+    }
+    header {
+      background: black ;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .phone {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      width: 200px;
+      box-shadow: 0 2px 5px black;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #cart {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      background: black (0, 0, 0);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<img src="" alt="Phone"
+<body>
+
+<header>
+  <h1>📱 MSI phone</h1>
+</header>
+
+<div id="cart">
+  🛒 Cart: <span id="cartCount">0</span>
+</div>
+
+<div class="container" id="phoneList"></div>
+
+<script>
+  const phones = [
+    { name: "iPhone 17 Pro Max", price: 721  },
+    { name: "Samsung Galaxy S27 Ultra", price: 711 },
+    { name: "Google Pixel 7", price: 502 }
+  ];
+
+  let cart = 0;
+
+  function renderPhones() {
+    const container = document.getElementById("phoneList");
+    phones.forEach(phone => {
+      const div = document.createElement("div");
+      div.className = "phone";
+      div.innerHTML = `
+        <h3>${phone.name}</h3>
+        <p>$${phone.price}</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+  }
+
+  renderPhones();
+</script>
+
+</body>
+</html>
